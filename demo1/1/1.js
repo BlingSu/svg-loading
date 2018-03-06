@@ -1,5 +1,7 @@
-/**
- * 普通3个函数
+/*
+ * @author: angelasu
+ * @date: 2018/03/05
+ * @description: 函数编写的几种方式
  */
 
 function checkName() {}
