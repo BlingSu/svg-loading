@@ -203,23 +203,106 @@
  */
 
 // 类式继承, 声明父类
-function SuperClass() {
-  this.superValue = true
-}
+// function SuperClass() {
+//   this.superValue = true
+// }
 
-// 为父类添加公有方法
-SuperClass.prototype.getSuperValue = function() {
-  return this.superValue
-}
+// // 为父类添加公有方法
+// SuperClass.prototype.getSuperValue = function() {
+//   return this.superValue
+// }
 
-// 声明子类
-function SubClass() {
-  this.subValue = false
-}
+// // 声明子类
+// function SubClass() {
+//   this.subValue = false
+// }
 
-// 继承父类
-SubClass.prototype = new SuperClass()
-// 为子类添加公有方法
-SubClass.prototype.getSuperValue = function() {
-  return this.subValue
-}
+// // 继承父类
+// SubClass.prototype = new SuperClass()
+// // 为子类添加公有方法
+// SubClass.prototype.getSubValue = function() {
+//   return this.subValue
+// }
+
+// var test = new SubClass()
+// console.log(test.getSuperValue())
+// // instanceof 检测某个对象是否是某个类的实例
+// console.log(subClass instanceof SuperClass)  // false
+// console.log(subClass.prototype instanceof SuperClass)  // true
+
+
+
+/**
+ * 构造函数继承
+ */
+
+// 声明父类
+// function SuperClass(id) {
+//   // 引用类型共有属性
+//   this.books = ['js', 'html', 'css']
+//   // 值类型共有属性
+//   this.id = id
+// }
+
+// // 父类声明原型方法
+// SuperClass.prototype.showBooks = function() {
+//   console.log(this.books)
+// }
+// // 声明子类
+// function SubClass(id) {
+  /**
+   * 继承父类
+   * call 可以更改函数的作用环境，可以将子类中的变量在父类执行一遍。故而继承父类的共有属性。
+   * 这类的继承没有涉及prototype所以父类的原型方法不会被子类继承，所以必须放在构造函数里面，如果这样，创建出来的每个实例都不会共用，而是单独一份。
+   */
+//   SuperClass.call(this.id)
+// }
+
+// // 创建第一个子类的实例
+// var test1 = new SubClass(10)
+// // 创建第二个子类的实例
+// var test2 = new SubClass(20)
+
+// test1.books.push('设计模式')
+
+// console.log(test1.books)
+
+
+/**
+ * 组合继承
+ * 优点: 融合类式继承和构造函数继承的优点
+ * 缺点: 使用构造函数继承时执行了一遍父类的构造函数，子类原型的类式继承又调用了一次
+ */
+
+// 组合式继承 声明父类
+// function SuperClass(name) {
+//   // 值类型共有属性
+//   this.name = name
+//   this.books = ['html', 'css', 'javascript']
+// }
+// // 父类原型共有方法
+// SuperClass.prototype.getName = function() {
+//   console.log(this.name)
+// }
+// // 声明子类
+// function SubClass(name, time) {
+//   // 构造函数式继承父类name属性
+//   SuperClass.call(this, name)
+//   // 子类中新增共有属性
+//   this.time = time
+// }
+// // 类式继承 子类原型继承父类
+// SubClass.prototype = new SuperClass()
+// // 子类原型方法
+// SubClass.prototype.getTime = function() {
+//   console.log(this.time)
+// }
+
+// var test = new SubClass('js book', 2014)
+// test.books.push('设计模式')
+// console.log(test.getTime())
+
+
+/**
+ * 原型式继承
+ */
