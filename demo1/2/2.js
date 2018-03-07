@@ -8,11 +8,11 @@
  * 封装
  */
 
-// var Book = function(id, bookname, price) {
-//   this.id = id
-//   this.bookname = bookname
-//   this.price = price
-// }
+var Book = function(id, bookname, price) {
+  this.id = id
+  this.bookname = bookname
+  this.price = price
+}
 
 /**
  * 也可以通过在类的原型上添加
@@ -20,19 +20,19 @@
  * 2，将一个对象赋值给类的原型对象
  */
 
-// Book.prototype.display = function() {
-  // console.log('show this book')
-// }
+Book.prototype.display = function() {
+  console.log('show this book')
+}
 /**
  * 或者
  */
-// Book.prototype = {
-  // display: function() {}
-// }
+Book.prototype = {
+  display: function() {}
+}
 
-// var book = new Book(1, 'book', '20')
+var book = new Book(1, 'book', '20')
 
-// console.log(book.price)
+console.log(book.price)
 
 /**
  * 属性与方法封装
@@ -42,29 +42,29 @@
  * 构造器: 初始化，创建对象时调用特权方法可以看作是类的构造器
  */
 
-// var Book = function(id, name, price) {
-//   // 私有属性
-//   var num = 1
+var Book = function(id, name, price) {
+  // 私有属性
+  var num = 1
 
-//   // 私有方法
-//   function checkId() {}
+  // 私有方法
+  function checkId() {}
 
-//   // 特权方法
-//   this.getName = function() {}
-//   this.getPrice = function() {}
-//   this.setName = function() {}
-//   this.setPrice = function() {}
+  // 特权方法
+  this.getName = function() {}
+  this.getPrice = function() {}
+  this.setName = function() {}
+  this.setPrice = function() {}
 
-//   // 对象公有属性
-//   this.id = id
+  // 对象公有属性
+  this.id = id
 
-//   // 对象公有方法
-//   this.copy = function() {}
+  // 对象公有方法
+  this.copy = function() {}
 
-//   // 构造器
-//   this.setName(name)
-//   this.setPrice(price)
-// }
+  // 构造器
+  this.setName(name)
+  this.setPrice(price)
+}
 
 
 /**
@@ -72,104 +72,104 @@
  */
 
 
-// // 类静态公有属性(对象不能访问)
-// Book.isChinese = true
+// 类静态公有属性(对象不能访问)
+Book.isChinese = true
 
-// // 类静态公有方法(对象不能访问)
-// Book.restTime = function() {
-//   console.log('new time')
-// }
+// 类静态公有方法(对象不能访问)
+Book.restTime = function() {
+  console.log('new time')
+}
 
-// Book.prototype = {
-//   // 公有属性
-//   isBook: false,
-//   // 公有方法
-//   display: function() {}
-// }
+Book.prototype = {
+  // 公有属性
+  isBook: false,
+  // 公有方法
+  display: function() {}
+}
 
 
-// var test = new Book(1, '书本', 77)
+var test = new Book(1, '书本', 77)
 
-// console.log(test.isChinese)
-// console.log(test.isBook)
-// console.log(test.bookname)
+console.log(test.isChinese)
+console.log(test.isBook)
+console.log(test.bookname)
 
 
 /**
  * 闭包实现 (类的静态变量)
  */
 
-// 利用闭包实现
-// var Book = (function() {
-//   // 静态私有变量
-//   var bookName = 0
+利用闭包实现
+var Book = (function() {
+  // 静态私有变量
+  var bookName = 0
 
-//   // 静态私有方法
-//   function checkBook(name) {}
+  // 静态私有方法
+  function checkBook(name) {}
 
-//   // 返回构造函数
-//   return function(mewId, newName, newPrice) {
-//     // 私有变量
-//     var name, price
-//     // 私有方法
-//     function checkId(id) {}
+  // 返回构造函数
+  return function(mewId, newName, newPrice) {
+    // 私有变量
+    var name, price
+    // 私有方法
+    function checkId(id) {}
 
-//     // 特权方法
-//     this.getName = function() {}
-//     this.getPrice = function() {}
-//     this.setName = function() {}
-//     this.setPrice = function() {}
+    // 特权方法
+    this.getName = function() {}
+    this.getPrice = function() {}
+    this.setName = function() {}
+    this.setPrice = function() {}
 
-//     // 公有属性
-//     this.id = newId
-//     // 公有方法
-//     this.copy = function() {}
-//     bookName++
-//     if (bookName > 100)
-//       throw new Error(`超过100了`)
+    // 公有属性
+    this.id = newId
+    // 公有方法
+    this.copy = function() {}
+    bookName++
+    if (bookName > 100)
+      throw new Error(`超过100了`)
 
-//     // 构造器
-//     this.setName(name)
-//     this.setPrice(price)
-//   }
-// })()
+    // 构造器
+    this.setName(name)
+    this.setPrice(price)
+  }
+})()
 
 
 /**
  * 在闭包外部添加原型属性和方法感觉很像脱离了闭包这个类，所以在闭包内部实现一个完成的类然后将其返回
  */
 
-// var Book = (function() {
-//   var bookNum = 0
-//   function checkBook(name) {}
+var Book = (function() {
+  var bookNum = 0
+  function checkBook(name) {}
 
-//   function book(newId, newName, newPrice) {
-//     var name, price
-//     function checkId(id) {}
+  function book(newId, newName, newPrice) {
+    var name, price
+    function checkId(id) {}
 
-//     this.getName = function() {}
-//     this.getPrice = function() {}
-//     this.setName = function() {}
-//     this.setPrice = function() {}
+    this.getName = function() {}
+    this.getPrice = function() {}
+    this.setName = function() {}
+    this.setPrice = function() {}
 
-//     this.id = newId
-//     this.copy = function() {}
-//     bookName++
-//     if (bookName > 100)
-//       throw new Error('book > 100')
-//     this.setName(name)
-//     this.setPrice(price)
-//   }
-//   //  构造原型
-//   _book.prototype = {
-//     // 静态公有属性
-//     isBook: false,
-//     // 静态公有方法
-//     display: function() {}
-//   }
-//   // 返回类
-//   return _book
-// })()
+    this.id = newId
+    this.copy = function() {}
+    bookName++
+    if (bookName > 100)
+      throw new Error('book > 100')
+    this.setName(name)
+    this.setPrice(price)
+  }
+  //  构造原型
+  _book.prototype = {
+    // 静态公有属性
+    isBook: false,
+    // 静态公有方法
+    display: function() {}
+  }
+  // 返回类
+  return _book
+})()
 
 
 /**
@@ -177,20 +177,20 @@
  */
 
 // 图书类
-// var Book = function(title, time, type) {
-//   // 判断this是否只想当前这个对象
-//   if (this instanceof Book) {
-//     this.title = title
-//     this.time = time
-//     this.type = type
-//   } else {
-//     return new Book(title, time, type)
-//   }
-// }
+var Book = function(title, time, type) {
+  // 判断this是否只想当前这个对象
+  if (this instanceof Book) {
+    this.title = title
+    this.time = time
+    this.type = type
+  } else {
+    return new Book(title, time, type)
+  }
+}
 
-// // 实例化一本书
-// var book = Book('javascript', '2018', 'js')
-// console.log(book)
+// 实例化一本书
+var book = Book('javascript', '2018', 'js')
+console.log(book)
 
 
 
@@ -203,32 +203,32 @@
  */
 
 // 类式继承, 声明父类
-// function SuperClass() {
-//   this.superValue = true
-// }
+function SuperClass() {
+  this.superValue = true
+}
 
-// // 为父类添加公有方法
-// SuperClass.prototype.getSuperValue = function() {
-//   return this.superValue
-// }
+// 为父类添加公有方法
+SuperClass.prototype.getSuperValue = function() {
+  return this.superValue
+}
 
-// // 声明子类
-// function SubClass() {
-//   this.subValue = false
-// }
+// 声明子类
+function SubClass() {
+  this.subValue = false
+}
 
-// // 继承父类
-// SubClass.prototype = new SuperClass()
-// // 为子类添加公有方法
-// SubClass.prototype.getSubValue = function() {
-//   return this.subValue
-// }
+// 继承父类
+SubClass.prototype = new SuperClass()
+// 为子类添加公有方法
+SubClass.prototype.getSubValue = function() {
+  return this.subValue
+}
 
-// var test = new SubClass()
-// console.log(test.getSuperValue())
-// // instanceof 检测某个对象是否是某个类的实例
-// console.log(subClass instanceof SuperClass)  // false
-// console.log(subClass.prototype instanceof SuperClass)  // true
+var test = new SubClass()
+console.log(test.getSuperValue())
+// instanceof 检测某个对象是否是某个类的实例
+console.log(subClass instanceof SuperClass)  // false
+console.log(subClass.prototype instanceof SuperClass)  // true
 
 
 
@@ -237,35 +237,35 @@
  */
 
 // 声明父类
-// function SuperClass(id) {
-//   // 引用类型共有属性
-//   this.books = ['js', 'html', 'css']
-//   // 值类型共有属性
-//   this.id = id
-// }
+function SuperClass(id) {
+  // 引用类型共有属性
+  this.books = ['js', 'html', 'css']
+  // 值类型共有属性
+  this.id = id
+}
 
-// // 父类声明原型方法
-// SuperClass.prototype.showBooks = function() {
-//   console.log(this.books)
-// }
-// // 声明子类
-// function SubClass(id) {
+// 父类声明原型方法
+SuperClass.prototype.showBooks = function() {
+  console.log(this.books)
+}
+// 声明子类
+function SubClass(id) {
   /**
    * 继承父类
    * call 可以更改函数的作用环境，可以将子类中的变量在父类执行一遍。故而继承父类的共有属性。
    * 这类的继承没有涉及prototype所以父类的原型方法不会被子类继承，所以必须放在构造函数里面，如果这样，创建出来的每个实例都不会共用，而是单独一份。
    */
-//   SuperClass.call(this.id)
-// }
+  SuperClass.call(this.id)
+}
 
-// // 创建第一个子类的实例
-// var test1 = new SubClass(10)
-// // 创建第二个子类的实例
-// var test2 = new SubClass(20)
+// 创建第一个子类的实例
+var test1 = new SubClass(10)
+// 创建第二个子类的实例
+var test2 = new SubClass(20)
 
-// test1.books.push('设计模式')
+test1.books.push('设计模式')
 
-// console.log(test1.books)
+console.log(test1.books)
 
 
 /**
@@ -275,32 +275,32 @@
  */
 
 // 组合式继承 声明父类
-// function SuperClass(name) {
-//   // 值类型共有属性
-//   this.name = name
-//   this.books = ['html', 'css', 'javascript']
-// }
-// // 父类原型共有方法
-// SuperClass.prototype.getName = function() {
-//   console.log(this.name)
-// }
-// // 声明子类
-// function SubClass(name, time) {
-//   // 构造函数式继承父类name属性
-//   SuperClass.call(this, name)
-//   // 子类中新增共有属性
-//   this.time = time
-// }
-// // 类式继承 子类原型继承父类
-// SubClass.prototype = new SuperClass()
-// // 子类原型方法
-// SubClass.prototype.getTime = function() {
-//   console.log(this.time)
-// }
+function SuperClass(name) {
+  // 值类型共有属性
+  this.name = name
+  this.books = ['html', 'css', 'javascript']
+}
+// 父类原型共有方法
+SuperClass.prototype.getName = function() {
+  console.log(this.name)
+}
+// 声明子类
+function SubClass(name, time) {
+  // 构造函数式继承父类name属性
+  SuperClass.call(this, name)
+  // 子类中新增共有属性
+  this.time = time
+}
+// 类式继承 子类原型继承父类
+SubClass.prototype = new SuperClass()
+// 子类原型方法
+SubClass.prototype.getTime = function() {
+  console.log(this.time)
+}
 
-// var test = new SubClass('js book', 2014)
-// test.books.push('设计模式')
-// console.log(test.getTime())
+var test = new SubClass('js book', 2014)
+test.books.push('设计模式')
+console.log(test.getTime())
 
 
 /**
@@ -318,20 +318,20 @@ function inheritObject(o) {
   return new F()
 }
 
-// var book = {
-//   name: 'book',
-//   alikeBook: ['css', 'html', 'js']
-// }
+var book = {
+  name: 'book',
+  alikeBook: ['css', 'html', 'js']
+}
 
-// var newBook = inheritObject(book)
-// newBook.name = 'test1 book'
-// newBook.alikeBook.push('jq')
+var newBook = inheritObject(book)
+newBook.name = 'test1 book'
+newBook.alikeBook.push('jq')
 
-// var otherBook = inheritObject(book)
-// otherBook.name = 'test2 book'
-// otherBook.alikeBook.push('....book?')
+var otherBook = inheritObject(book)
+otherBook.name = 'test2 book'
+otherBook.alikeBook.push('....book?')
 
-// console.log(newBook.alikeBook)
+console.log(newBook.alikeBook)
 
 
 /**
@@ -339,23 +339,23 @@ function inheritObject(o) {
  */
 
 // 寄生式继承 声明基对象
-// var book = {
-//   name: 'book',
-//   alikeBook: ['css', 'html', 'js']
-// }
+var book = {
+  name: 'book',
+  alikeBook: ['css', 'html', 'js']
+}
 
-// function createBook(obj) {
-//   // 通过原型继承方式创建对象
-//   var o = new inheritObject(obj)
-//   // 拓展新对象
-//   o.getName = function() {
-//     console.log(name)
-//   }
-//   // 返回拓展后的对象
-//   return o
-// }
+function createBook(obj) {
+  // 通过原型继承方式创建对象
+  var o = new inheritObject(obj)
+  // 拓展新对象
+  o.getName = function() {
+    console.log(name)
+  }
+  // 返回拓展后的对象
+  return o
+}
 
-// console.log(createBook(book))
+console.log(createBook(book))
 
 
 /**
@@ -369,48 +369,48 @@ function inheritObject(o) {
  * 传递参数 superClass 父类
  */
 
-// function inheritPrototype(subClass, superClass) {
-//   // 复制一份父类的原型副本保存在变量中
-//   var p = inheritObject(superClass.prototype)
-//   // 修正因为重写子类原型而导致子类constructor属性被修改
-//   p.constructor = subClass
-//   // 设置子类的原型
-//   subClass.prototype = p
-// }
+function inheritPrototype(subClass, superClass) {
+  // 复制一份父类的原型副本保存在变量中
+  var p = inheritObject(superClass.prototype)
+  // 修正因为重写子类原型而导致子类constructor属性被修改
+  p.constructor = subClass
+  // 设置子类的原型
+  subClass.prototype = p
+}
 
-// // 目的就是子类的原型继承父类的原型但是没有执行父类的构造函数
+// 目的就是子类的原型继承父类的原型但是没有执行父类的构造函数
 
-// // 父类
-// function SuperClass(name) {
-//   this.name = name
-//   this.colors = ['red', 'blue', 'green']
-// }
-// // 定义父类原型方法
-// SuperClass.prototype.getName = function() {
-//   console.log(this.name)
-// }
+// 父类
+function SuperClass(name) {
+  this.name = name
+  this.colors = ['red', 'blue', 'green']
+}
+// 定义父类原型方法
+SuperClass.prototype.getName = function() {
+  console.log(this.name)
+}
 
-// // 定义子类
-// function SubClass(name, time) {
-//   // 构造函数继承
-//   SuperClass.call(this, name)
-//   // 子类新增属性
-//   this.time = time
-// }
-// // 寄生式继承父类原型
-// inheritPrototype(SubClass, SuperClass)
-// // 子类新增原型方法
-// SubClass.prototype.getTime = function() {
-//   console.log(this.time)
-// }
+// 定义子类
+function SubClass(name, time) {
+  // 构造函数继承
+  SuperClass.call(this, name)
+  // 子类新增属性
+  this.time = time
+}
+// 寄生式继承父类原型
+inheritPrototype(SubClass, SuperClass)
+// 子类新增原型方法
+SubClass.prototype.getTime = function() {
+  console.log(this.time)
+}
 
-// var test1 = new SubClass('js', 2018)
-// var test2 = new SubClass('css', 2017)
+var test1 = new SubClass('js', 2018)
+var test2 = new SubClass('css', 2017)
 
 // // 首先创建了父类，父类的原型方法，然后创建子类，在构造函数中实现构造函数继承，然后通过寄生式继承了父类的原型，最后在对子类添加原型和方法
-// test1.colors.push('black')
+test1.colors.push('black')
 
-// console.log(test1)
+console.log(test1)
 
 
 /**
@@ -479,3 +479,58 @@ Object.prototype.mix = function() {
 }
 
 
+/**
+ * 多种调用方式 -> 多态
+ */
+
+
+function add() {
+  // 获取参数长度对应返回
+  var arg = arguments,
+      len = arg.length
+      console.log(arg)
+  switch(len) {
+    case 0:
+      return 10
+    case 1:
+      return 10 + arg[0]
+    case 2:
+      return arg[0] + arg[1]
+  }
+}
+
+console.log(add(33))
+
+
+
+/**
+ * 换种类形式
+ */
+
+function Add() {
+  function zero() {
+    return 10
+  }
+  function one(num) {
+    return 10 + num
+  }
+  function two(num1, num2) {
+    return num1 + num2
+  }
+
+  this.add = function() {
+    var arg = arguments,
+        len = arg.length
+        switch(len) {
+          case 0:
+            return zero()
+          case 1:
+            return one()
+          case 2:
+            return two()
+        }
+  }
+}
+// 实例化类
+var test = new Add()
+console.log(test.add())
