@@ -304,5 +304,178 @@
 
 
 /**
- * 原型式继承
+ * 原型式继承 -> 类似Object.create()
+ * 父类对象book中的值类型的属性被复制，引用类型的属性被共用
  */
+
+// 原型式继承
+function inheritObject(o) {
+  // 声明一个过渡对象
+  function F() {}
+  // 过渡对象的原型继承父对象
+  F.prototype = o
+  // 返回过度对象的一个实例
+  return new F()
+}
+
+// var book = {
+//   name: 'book',
+//   alikeBook: ['css', 'html', 'js']
+// }
+
+// var newBook = inheritObject(book)
+// newBook.name = 'test1 book'
+// newBook.alikeBook.push('jq')
+
+// var otherBook = inheritObject(book)
+// otherBook.name = 'test2 book'
+// otherBook.alikeBook.push('....book?')
+
+// console.log(newBook.alikeBook)
+
+
+/**
+ * 寄生式继承
+ */
+
+// 寄生式继承 声明基对象
+// var book = {
+//   name: 'book',
+//   alikeBook: ['css', 'html', 'js']
+// }
+
+// function createBook(obj) {
+//   // 通过原型继承方式创建对象
+//   var o = new inheritObject(obj)
+//   // 拓展新对象
+//   o.getName = function() {
+//     console.log(name)
+//   }
+//   // 返回拓展后的对象
+//   return o
+// }
+
+// console.log(createBook(book))
+
+
+/**
+ * 寄生组合式继承
+ */
+
+
+/**
+ * 寄生式继承 继承原型
+ * 传递参数 subClass 子类
+ * 传递参数 superClass 父类
+ */
+
+// function inheritPrototype(subClass, superClass) {
+//   // 复制一份父类的原型副本保存在变量中
+//   var p = inheritObject(superClass.prototype)
+//   // 修正因为重写子类原型而导致子类constructor属性被修改
+//   p.constructor = subClass
+//   // 设置子类的原型
+//   subClass.prototype = p
+// }
+
+// // 目的就是子类的原型继承父类的原型但是没有执行父类的构造函数
+
+// // 父类
+// function SuperClass(name) {
+//   this.name = name
+//   this.colors = ['red', 'blue', 'green']
+// }
+// // 定义父类原型方法
+// SuperClass.prototype.getName = function() {
+//   console.log(this.name)
+// }
+
+// // 定义子类
+// function SubClass(name, time) {
+//   // 构造函数继承
+//   SuperClass.call(this, name)
+//   // 子类新增属性
+//   this.time = time
+// }
+// // 寄生式继承父类原型
+// inheritPrototype(SubClass, SuperClass)
+// // 子类新增原型方法
+// SubClass.prototype.getTime = function() {
+//   console.log(this.time)
+// }
+
+// var test1 = new SubClass('js', 2018)
+// var test2 = new SubClass('css', 2017)
+
+// // 首先创建了父类，父类的原型方法，然后创建子类，在构造函数中实现构造函数继承，然后通过寄生式继承了父类的原型，最后在对子类添加原型和方法
+// test1.colors.push('black')
+
+// console.log(test1)
+
+
+/**
+ * 多继承: 继承多个对象的属性来实现类似多继承
+ */
+
+// 单继承 属性复制
+var extend = function(target, source) {
+  // 遍历所有对象中的属性
+  for (var property in source) {
+    // 将源对象的属性复制到目标对象中
+    target[property] = source[property]
+  }
+  // 返回目标对象
+  return target
+}
+
+
+/**
+ * 多继承 属性复制
+ * @i: 从第二个参数起为被继承的对象
+ * @len: 获取参数长度
+ * @target: 第一个对象的目标对象
+ * @arg: 缓存参数对象
+ */
+
+var mix = function() {
+  var i  = 1,
+    len = arguments.length,
+    target = arguments[0],
+    arg
+
+  // 遍历被继承的对象
+  for (; i < len; i++) {
+    // 缓存当前对象
+    arg = arguments[i]
+    // 遍历被继承对象中的属性
+    for (var property in arg) {
+      // 将被继承对象中的属性复制到目标对象中
+      target[property] = arg[property]
+    }
+  }
+  return target
+}
+
+
+/**
+ * 绑定在原生Object中
+ */
+
+Object.prototype.mix = function() {
+  var i  = 1,
+    len = arguments.length,
+    arg
+
+  // 遍历被继承的对象
+  for (; i < len; i++) {
+    // 缓存当前对象
+    arg = arguments[i]
+    // 遍历被继承对象中的属性
+    for (var property in arg) {
+      // 将被继承对象中的属性复制到目标对象中
+      this[property] = arg[property]
+    }
+  }
+}
+
+
