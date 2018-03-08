@@ -6,42 +6,42 @@
 
 // 通过创建类，然后实例对象方式
 
-// var Java = function(content) {
-//   // 将内容保存在content里面
-//   this.content = content
-//   // 创建对象时，通过闭包，直接执行，将内容按需求插入
-//   (function(content) {
-//     var div = document.createElement('div')
-//     div.innerHTML = content
-//     div.style.color = 'green'
-//     document.getElementById('container').appendChild(div)
-//   })(content)
-// }
+var Java = function(content) {
+  // 将内容保存在content里面
+  this.content = content
+  // 创建对象时，通过闭包，直接执行，将内容按需求插入
+  (function(content) {
+    var div = document.createElement('div')
+    div.innerHTML = content
+    div.style.color = 'green'
+    document.getElementById('container').appendChild(div)
+  })(content)
+}
 
-// var PHP = function(content) {
-//   // 将内容保存在content里面
-//   this.content = content
-//   // 创建对象时，通过闭包，直接执行，将内容按需求插入
-//   (function(content) {
-//     var div = document.createElement('div')
-//     div.innerHTML = content
-//     div.style.color = 'yellow'
-//     div.style.background = 'red'
-//     document.getElementById('container').appendChild(div)
-//   })(content)
-// }
+var PHP = function(content) {
+  // 将内容保存在content里面
+  this.content = content
+  // 创建对象时，通过闭包，直接执行，将内容按需求插入
+  (function(content) {
+    var div = document.createElement('div')
+    div.innerHTML = content
+    div.style.color = 'yellow'
+    div.style.background = 'red'
+    document.getElementById('container').appendChild(div)
+  })(content)
+}
 
-// // 语言工厂～
-// function LanguageFactory(type, content) {
-//   switch(type) {
-//     case 'java':
-//       return new Java(content)
-//     case 'php':
-//       return new PHP(content)
-//   }
-// }
+// 语言工厂～
+function LanguageFactory(type, content) {
+  switch(type) {
+    case 'java':
+      return new Java(content)
+    case 'php':
+      return new PHP(content)
+  }
+}
 
-// LanguageFactory('php', 'Java or PHP ?')
+LanguageFactory('php', 'Java or PHP ?')
 
 
 /**
@@ -52,21 +52,21 @@
 
 // 安全模式类: 在构造函数开始的时候判读当前对象this指向是不是类，如果是通过new创建对象，不是的话那可能在全局志向window，就要重新返回新创建对象了。
 
-// var Demo = function() {
-//   if (!(this instanceof Demo)) {
-//     return new Demo()
-//   }
-// }
-// Demo.prototype = {
-//   show () {
-//     console.log('ok')
-//   }
-// }
-// var d = new Demo()
-// var dd = Demo()
+var Demo = function() {
+  if (!(this instanceof Demo)) {
+    return new Demo()
+  }
+}
+Demo.prototype = {
+  show () {
+    console.log('ok')
+  }
+}
+var d = new Demo()
+var dd = Demo()
 
-// console.log(d.show())
-// console.log(dd.show())
+console.log(d.show())
+console.log(dd.show())
 
 
 /**
