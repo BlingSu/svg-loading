@@ -10,16 +10,16 @@
  * 如果父类有抛出错误，那么可以对忘记重写子类是有帮助的。
  */
 
-// var Car = function() {
-//   Car.prototype = {
-//     getPrice: function() {
-//       return new Error('抽象方法不能调用')
-//     },
-//     getSpeed: function() {
-//       return new Error('抽象方法不能调用')
-//     }
-//   }
-// }
+var Car = function() {
+  Car.prototype = {
+    getPrice: function() {
+      return new Error('抽象方法不能调用')
+    },
+    getSpeed: function() {
+      return new Error('抽象方法不能调用')
+    }
+  }
+}
 
 
 /**
