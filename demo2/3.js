@@ -56,7 +56,6 @@ VehicleFactory.Car.prototype = {
     }
 }
 
-
 var Lamborghini = function(price, speed) {
   this.price = price
   this.speed = speed
