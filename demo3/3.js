@@ -1,7 +1,7 @@
 /*
  * @author: angelasu
  * @date: 2018/03/13
- * @description: 装饰着模式
+ * @description: 装饰者模式
  */
 
 /** 不改变原对象的基础上，通过对其进行包装托章 */
