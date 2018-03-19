@@ -51,3 +51,50 @@ Observer.regist('test', function(e) {
 })
 
 Observer.fire('test', {msg: '测试～～～'})
+
+
+
+/**
+ * 对象间解耦
+ */
+
+// 订阅者
+var Student = function(result) {
+  var _this = this
+  _this.result = result
+  _this.say = function() {
+    console.log(_this.result)
+  }
+}
+
+Student.prototype.answer = function(question) {
+  Observer.regist(question, this.say)
+}
+
+Student.prototype.sleep = function(question) {
+  console.log(this.result + ' ' + question + ' 已被注销')
+  Observer.remove(question, this.say)
+}
+
+// 观察者
+var Teacher = function() {}
+
+Teacher.prototype.ask = function(question) {
+  console.log('问题是 ' + question)
+  Observer.fire(question)
+}
+
+
+var student1 = new Student('student1 回答'),
+    student2 = new Student('student2 回答'),
+    student3 = new Student('student3 回答')
+
+student1.answer('question1')
+student2.answer('question2')
+student3.answer('question3')
+student3.sleep('go sleep')
+
+var teacher = new Teacher()
+
+teacher.ask('teacher ... question1')
+teacher.ask('teacher ... question2')
