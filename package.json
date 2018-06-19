@@ -5,7 +5,8 @@
   "description": "loading using vue2.0",
   "main": "index.js",
   "scripts": {
-    "dev": "poi dev/index.js"
+    "dev": "poi test/index.js",
+    "build": "poi build ./src/index.js"
   },
   "repository": {
     "type": "git",
@@ -22,7 +23,6 @@
   },
   "homepage": "https://github.com/angelasubi/vue-loading#readme",
   "devDependencies": {
-    "poi": "^10.2.3",
     "less": "^2.7.2",
     "less-loader": "^4.0.5"
   }
