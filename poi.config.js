@@ -4,6 +4,6 @@ module.exports = {
   entry: path.resolve(__dirname, './test/index'),
   vendor: false,
   filename: {
-    js: 'vue2-loading.js'
+    js: 'svg-loading.js'
   }
 }

@@ -1,10 +1,10 @@
 
-import Loading from './Vue2Loading.vue'
+import Loading from './SvgLoading.vue'
 
-const Vue2Loading = {
+const SvgLoading = {
   install(Vue) {
-    Vue.component('Vue2Loading', Loading)
+    Vue.component('SvgLoading', Loading)
   }
 }
 
-export default Vue2Loading
+export default SvgLoading

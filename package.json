@@ -1,8 +1,8 @@
 
 {
-  "name": "vue2-loading",
+  "name": "svg-loading",
   "version": "1.0.0",
-  "description": "loading using vue2.0",
+  "description": "svg-loading using vue2.0",
   "main": "index.js",
   "scripts": {
     "dev": "poi test/index.js",
@@ -10,18 +10,20 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/angelasubi/vue-loading.git"
+    "url": "git+https://github.com/angelasubi/svg-loading.git"
   },
   "keywords": [
+    "vue-loading",
+    "loading",
     "vue2-loading",
-    "loading"
+    "svg-loading"
   ],
-  "author": "angelasu",
+  "author": "angelasubi",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/angelasubi/vue-loading/issues"
+    "url": "https://github.com/angelasubi/svg-loading/issues"
   },
-  "homepage": "https://github.com/angelasubi/vue-loading#readme",
+  "homepage": "https://github.com/angelasubi/svg-loading#readme",
   "devDependencies": {
     "less": "^2.7.2",
     "less-loader": "^4.0.5"

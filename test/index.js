@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import App from './App'
-import Vue2Loading from '../src/index'
+import SvgLoading from '../src/index'
 
-Vue.use(Vue2Loading)
+Vue.use(SvgLoading)
 
 new Vue({
   el: '#app',

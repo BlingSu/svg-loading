@@ -1,1 +1,1 @@
-# 基于 Vue2.0 的Loading组件
+# 基于 Vue2.0 的svg-loading组件
