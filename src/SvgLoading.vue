@@ -8,7 +8,7 @@
 
 <script>
 export default {
-  name: 'loading',
+  name: 'svg-loading',
   props: {
     size: {
       type: Number,
@@ -41,47 +41,4 @@ export default {
 }
 </script>
 
-<style lang="less" type="text/less" scoped>
-.loading {
-  display: inline-block;
-  pointer-events: none;
-  will-change: transform, opacity;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-@offset: 187;
-@duration: 1.4s;
-
-.svg {
-  animation: rotator @duration linear infinite;
-}
-
-@keyframes rotator {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(270deg); }
-}
-
-.path {
-  stroke-dasharray: @offset;
-  stroke-dashoffset: 0;
-  transform-origin: center;
-  animation: dz @duration ease-in-out infinite;
-}
-
-@keyframes colors {
-  0% { stroke: #fff; }
-  25% { stroke: #58b7ff; }
-  50% { stroke: #58b7ff; }
-  75% { stroke: #fff; }
-  100% { stroke: #58b7ff; }
-}
-
-@keyframes dz {
-  0% { stroke-dashoffset: @offset; }
-  50% { stroke-dashoffset: @offset/4; transform: rotate(135deg); }
-  100% { stroke-dashoffset: @offset; transform: rotate(450deg) }
-}
-</style>
+<style src="./styles/loading.less" lang="less"></style>

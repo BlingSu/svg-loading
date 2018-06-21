@@ -1,7 +1,8 @@
 const path = require('path')
 
 module.exports = {
-  entry: path.resolve(__dirname, './test/index'),
+  extractCSS: false,
+  entry: path.resolve(__dirname, './dev/index.js'),
   vendor: false,
   filename: {
     js: 'svg-loading.js'
