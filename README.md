@@ -14,18 +14,22 @@ yarn add svg-loading
 ## Usage
 
 ```js
-import SvgLoading from 'svg-laoding'
+import SvgLoading from 'svg-loading'
 ```
 
 ## Props
-
+|Name|Type|Default|Description|
+|:----- |:------|:------|:------|
+|size |Number |50 |Set the loading size |
+|color |String |#58b7ff |Set the loading color |
+|visible |Boolean |false |Set the loading display |
 
 ## Example
 
 ```js
 <template>
   <div id="app">
-    <svg-loading v-if="loading"></svg-loading>
+    <svg-loading :visible="loading"></svg-loading>
   </div>
 </template>
 
