@@ -1,4 +1,4 @@
-# 基于 Vue2.0 的svg-loading组件
+# Using Vue2.0 svg-loading component
 
 ## Install
 
